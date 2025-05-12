@@ -1,5 +1,3 @@
-// app.js
-// Configura con tus datos de Firebase:
 const firebaseConfig = {
   apiKey: "AIzaSyCNSxAOxsvmEK8ZSfgQ2eOulmuGz9xcw2k",
   authDomain: "tomeu-nota.firebaseapp.com",
@@ -23,9 +21,6 @@ const btnGitHub   = document.getElementById('btn-github');
 const emailForm   = document.getElementById('email-form');
 const inputEmail  = document.getElementById('email');
 const inputPass   = document.getElementById('password');
-const userInfoDiv = document.getElementById('user-info');
-const userNameEl  = document.getElementById('user-name');
-const btnLogout   = document.getElementById('btn-logout');
 
 // Login con Google
 btnGoogle.addEventListener('click', () => {
@@ -57,14 +52,7 @@ emailForm.addEventListener('submit', e => {
 // Observador de estado de autenticación
 auth.onAuthStateChanged(user => {
   if (user) {
-    userInfoDiv.style.display = 'block';
-    userNameEl.textContent = user.displayName || user.email;
-  } else {
-    userInfoDiv.style.display = 'none';
+    // Si está autenticado, redirige a page/home.html
+    window.location.href = 'page/home.html';
   }
-});
-
-// Cerrar sesión
-btnLogout.addEventListener('click', () => {
-  auth.signOut();
 });

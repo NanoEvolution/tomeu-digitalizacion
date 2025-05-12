@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home - Bienvenido</title>
+  <!-- SDK de Firebase (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="home-container">
+    <h1>Bienvenido, <span id="user-name"></span> 🐾</h1>
+    <button id="btn-logout">Cerrar sesión</button>
+  </div>
+
+  <script>
+    // Inicializa Firebase (misma config que en app.js)
+    const firebaseConfig = {
+      apiKey: "AIzaSyCNSxAOxsvmEK8ZSfgQ2eOulmuGz9xcw2k",
+      authDomain: "tomeu-nota.firebaseapp.com",
+      projectId: "tomeu-nota",
+      storageBucket: "tomeu-nota.appspot.com",
+      messagingSenderId: "384494086325",
+      appId: "1:384494086325:web:9e11b28d54104c4ad7b6fc"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Observa el estado de autenticación
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        document.getElementById('user-name').textContent = user.displayName || user.email;
+      } else {
+        // Si no hay usuario, regresa al login
+        window.location.replace('../index.html');
+      }
+    });
+
+    // Cerrar sesión
+    document.getElementById('btn-logout').addEventListener('click', () => {
+      auth.signOut().then(() => {
+        window.location.replace('../index.html');
+      });
+    });
+  </script>
+</body>
+</html>
