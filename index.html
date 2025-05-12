@@ -1,0 +1,40 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login con Firebase</title>
+  <!-- SDK de Firebase (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Iniciar sesión</h1>
+
+  <!-- Botones de login social -->
+  <button id="btn-google">Google</button>
+  <button id="btn-github">GitHub</button>
+
+  <hr>
+
+  <!-- Formulario email/password -->
+  <form id="email-form">
+    <input type="email" id="email" placeholder="Correo electrónico" required>
+    <input type="password" id="password" placeholder="Contraseña" required>
+    <button type="submit">Entrar / Registrar</button>
+  </form>
+
+  <!-- Zona de info de usuario -->
+  <div id="user-info" style="display:none;">
+    <p>Bienvenido, <span id="user-name"></span></p>
+    <button id="btn-logout">Cerrar sesión</button>
+  </div>
+
+  <!-- Nuestro script -->
+  <script src="app.js"></script>
+</body>
+</html>
+
+
